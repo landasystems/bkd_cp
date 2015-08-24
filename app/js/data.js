@@ -1,6 +1,6 @@
 app.factory("Data", ['$http', '$location',
     function ($http, $q, $location) {
-        var serviceBase = '../satu/';
+        var serviceBase = '../';
         var suffix = '.html';
 
         var obj = {};

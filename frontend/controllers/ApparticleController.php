@@ -55,7 +55,7 @@ class ApparticleController extends Controller {
         //init variable
         $params = $_REQUEST;
         $filter = array();
-        $sort = "created DESC";
+        $sort = "article.created DESC";
         $offset = 0;
         $limit = 10;
         //        Yii::error($params);
@@ -166,6 +166,7 @@ class ApparticleController extends Controller {
     }
 
     public function actionDelete($id) {
+        Yii::error($id);
         $model = $this->findModel($id);
 
         if ($model->delete()) {

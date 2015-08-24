@@ -12,7 +12,7 @@ angular.module('app')
 
                 // config
                 $scope.app = {
-                    name: 'Sahid Montana',
+                    name: 'BKD Sampang',
                     version: '1.1',
                 }
 
