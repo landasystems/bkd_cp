@@ -83,7 +83,7 @@ class ApparticleController extends Controller {
                 ->from('article')
                 ->join('join','article_category','article_category.id = article.article_category_id')
                 ->orderBy($sort)
-                ->select("*");
+                ->select("article.*, article_category.name");
 
         //filter
         if (isset($params['filter'])) {

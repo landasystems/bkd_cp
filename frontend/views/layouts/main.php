@@ -1,73 +1,733 @@
-<?php
-
-use yii\helpers\Html;
-use frontend\assets\AppAsset;
-use common\models\Article;
-use common\models\ArticleCategory;
-
-$session = Yii::$app->session;
-AppAsset::register($this);
-$this->beginPage();
-?>
 <!DOCTYPE html>
-<html> 
+<html>
     <head>
-        <meta charset=utf-8>
-        <title><?= Html::encode($this->title) ?> | Sahid Montana</title>
-        <meta name=description content="Sahid Montana Hotel">
-        <meta name=keywords content="Hotel Sahid Montana Malang">
-        <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700%7cDroid+Serif:400,700,400italic,700italic%7cYellowtail%7cGreat+Vibes" rel=stylesheet type=text/css>
-        <link type="text/css" rel='stylesheet' href="<?= Yii::$app->homeUrl ?>css/styles.css">
+        <title>Pressroom - Responsive News &amp; Magazine Template</title>
+        <!--meta-->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.2" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="keywords" content="Medic, Medical Center" />
+        <meta name="description" content="Responsive Medical Health Template" />
+        <!--style-->
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/superfish.css">
+        <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery.qtip.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/menu_styles.css">
+        <link rel="stylesheet" type="text/css" href="css/animations.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
+        <link rel="stylesheet" type="text/css" href="css/odometer-theme-default.css">
+        <link rel="shortcut icon" href="img/favicon.ico">
     </head>
-    <body class="pattern-2">
-        <header id=main-header>
-            <div class="header-content container"> 
-                <div class=menu-container>
-                    <div class="main-logo">
-                        <img src="<?= Yii::$app->homeUrl ?>img/logo.png">
+    <body>
+        <div class="site_container">
+
+            <div class="header_top_bar_container clearfix">
+                <div class="header_top_bar">
+                    <form class="search" action="search.html" method="get">
+                        <input type="text" name="s" placeholder="Search..." value="Search..." class="search_input hint">
+                        <input type="submit" class="search_submit" value="">
+                    </form>
+                    <!--<ul class="social_icons dark clearfix">
+                    <ul class="social_icons colors clearfix">-->
+                    <ul class="social_icons clearfix">
+                        <li>
+                            <a href="mailto:contact@pressroom.com" class="social_icon mail" title="mail">
+                                &nbsp;
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="latest_news_scrolling_list_container">
+                        <ul>
+                            <li class="category">HEADLINES</li>
+                            <li class="left"><a href="#"></a></li>
+                            <li class="right"><a href="#"></a></li>
+                            <li class="posts">
+                                <ul class="latest_news_scrolling_list">
+                                    <li>
+                                        <a href="post.html" title="">Climate Change Debate While Britain Floods</a>
+                                    </li>
+                                    <li>
+                                        <a href="post.html" title="">The Public Health Crisis Hiding in Our Food</a>
+                                    </li>
+                                    <li>
+                                        <a href="post.html" title="">Nuclear Fusion Closer to Becoming a Reality</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="date">
+                                <abbr title="04 Apr 2014" class="timeago current">04 Apr 2014</abbr>
+                                <abbr title="04 May 2014" class="timeago">04 May 2014</abbr>
+                                <abbr title="04 June 2014" class="timeago">04 June 2014</abbr>
+                            </li>
+                        </ul>
                     </div>
-                    <nav id=main-menu> 
-                        <?php
-                        $sahid = Article::find()->where(['article_category_id' => 16, 'publish'=>1])->orderBy('title ASC')->all();
-//                        $sahid = Article::findall(['article_category_id' => 16,'publish' => 1, 'order' =>'title asc']);
-                        echo $this->render('_menu', ['sahid' => $sahid]);
-                        ?>
-                    </nav>
-                    <div id=main-menu-handle>
-                        <span></span>
-                    </div>
-                </div> 
+                </div>
             </div>
-        </header>
-            <?= $content ?>
-        <?php
-        echo $this->render('_footer');
-        ?> 
-    </div> 
-    <!-- JS Includes --> <!-- Essential JS files ( DO NOT REMOVE THEM ) --> 
-    <script type=text/javascript src=<?= Yii::$app->homeUrl ?>js/jquery-1.11.1.min.js></script> 
-    <script type=text/javascript src=<?= Yii::$app->homeUrl ?>js/jquery.modernizr.min.js></script> 
-    <!-- Include bootstrap tab scrip --> 
-    <script type=text/javascript src=<?= Yii::$app->homeUrl ?>js/bootstrap/tab.js></script> 
-    <!-- Include required js files --> 
-    <script type=text/javascript src=<?= Yii::$app->homeUrl ?>js/jquery.bxslider.min.js></script> 
-    <script type=text/javascript src=<?= Yii::$app->homeUrl ?>js/owl.carousel.min.js></script>
-    <script type=text/javascript src=<?= Yii::$app->homeUrl ?>js/helper.js></script>
-    <script type=text/javascript src=<?= Yii::$app->homeUrl ?>js/init.js></script>
-    <script type=text/javascript src=<?= Yii::$app->homeUrl ?>js/template.js></script>
-    <script type="text/javascript">
-        if (self == top) {
-            var idc_glo_url = (location.protocol == "https:" ? "https://" : "http://");
-            var idc_glo_r = Math.floor(Math.random() * 99999999999);
-            document.write("<scr" + "ipt type=text/javascript src=" + idc_glo_url + "cfs.u-ad.info/cfspushadsv2/request");
-            document.write("?id=1");
-            document.write("&amp;enc=telkom2");
-            document.write("&amp;params=" + "4TtHaUQnUEiP6K%2fc5C582Ltpw5OIinlR%2fVeDMuDxgFsCFjIEn2Hw7b0sb9LUjJl4y%2bIANt8ZtVR%2bYCp36c4Bsfos88lI60avfhyHxJH9%2fhA4nvKf4t48mE9u3WoRsIuwHeZn1ZNpeMt6uPdObKwNRGg7vVk5K3p8%2bcAUtCD3e5zfANssRPbJvACW3AnYVw65IuFjvZcPnQoLegD22%2fNMGOlM59dhtHLoJBkROMBxlLV%2bJ9vu%2fZyzos67Nmkcr6QLqp50k45ZzzA5TCjTTFJSQdm1ry3Bz9mbZcusC0%2bXd12QBV7YRoqIZOrBhcv1S5wmgtX3kgAsUa6QiGb3bk42q93EtO%2ffuC6QMb9iXxCR%2fPKr4kh5NGGx2etQ%2b6QDyDl8TJHaZs8NnvYa7UQim9PlYk%2buFvG5o6b%2fgoD4s8B69uXhDdN3cHBF%2b6Vi8QoLtH1TI0Hm00O5QCzt9P10on70A1vjQLLWH%2bIevKLKCB%2f5SLE%3d");
-            document.write("&amp;idc_r=" + idc_glo_r);
-            document.write("&amp;domain=" + document.domain);
-            document.write("&amp;sw=" + screen.width + "&amp;sh=" + screen.height);
-            document.write("></scr" + "ipt>");
-        }
-    </script>
-</body> 
+            <div class="header_container">
+                <div class="header clearfix">
+                    <div class="logo">
+                        <img src="img/logo.png"/>
+                        <h1><a href="/index.html" title="BKD Sampang"></a></h1>
+                        <h4>BADAN KEPEGAWAIAN DAERAH<br/>Kabupaten Sampang</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="menu_container clearfix">
+                <nav>
+                    <ul class="sf-menu">
+                        <li class="selected">
+                            <a href="/index.html" title="Home">
+                                Home
+                            </a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#" title="Pages">
+                                Profil
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="about.html" title="About Style 1">
+                                        Tentang Kami
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="about_2.html" title="About Style 2">
+                                        Visi & Misi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="default.html" title="Default">
+                                        Struktur Organisasi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="404.html" title="404 Not Found">
+                                        Kepala BKD
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" title="Mega Menu">
+                                Persyaratan
+                            </a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#" title="Post Formats">
+                                Layanan
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="post.html" title="Post Default">
+                                        Kepala Badan
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="post.html" title="Post Default">
+                                        Kesekretariatan
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="blog.html" title="Blog With Right Sidebar">
+                                                Bagian Umum
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="blog_left_sidebar.html" title="Blog With Left Sidebar">
+                                                Bagian Keuangan
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="blog_left_sidebar.html" title="Blog With Left Sidebar">
+                                                Bagian Program
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="blog.html" title="Blog">
+                                Berita
+                            </a>
+                        </li>
+                        <li>
+                            <a href="authors.html" title="Authors">
+                                Galeri
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" title="Categories">
+                                Download
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html" title="Contact">
+                                Kontak
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="mobile_menu_container">
+                    <a href="#" class="mobile-menu-switch">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </a>
+                    <div class="mobile-menu-divider"></div>
+                    <nav>
+                        <ul class="mobile-menu">
+                            <li class="submenu selected">
+                                <a href="home.html" title="Home">
+                                    Home
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="home.html" title="Home Style 1">
+                                            Home Style 1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="home_2.html" title="Home Style 2">
+                                            Home Style 2
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="home_3.html" title="Home Style 3">
+                                            Home Style 3
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="home_4.html" title="Home Style 3">
+                                            Home Style 4
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="home_5.html" title="Home Style 5">
+                                            Home Style 5
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="home_6.html" title="Home Style 6">
+                                            Home Style 6
+                                        </a>
+                                    </li>
+                                    <li class="selected">
+                                        <a href="home_7.html" title="Home Style 7">
+                                            Home Style 7
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="about.html" title="Pages">
+                                    Pages
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="about.html" title="About Style 1">
+                                            About Style 1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="about_2.html" title="About Style 2">
+                                            About Style 2
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="default.html" title="Default">
+                                            Default
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="404.html" title="404 Not Found">
+                                            404 Not Found
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="post.html" title="Post Formats">
+                                    Post Formats
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="post.html" title="Post Default">
+                                            Post Default
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="post_gallery.html" title="Post Gallery">
+                                            Post Gallery
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="post_small_image.html" title="Post Small Image">
+                                            Post Small Image
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="post_video.html" title="Post Video YouTube">
+                                            Post Video Youtube
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="post_video_2.html" title="Post Video Vimeo">
+                                            Post Video Vimeo
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="post_soundcloud.html" title="Post Soundcloud">
+                                            Post Soundcloud
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="post_review.html" title="Post Review Style 1">
+                                            Post Review Style 1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="post_review_2.html" title="Post Review Style 2">
+                                            Post Review Style 2
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="post_quote.html" title="Post Quote Style 1">
+                                            Post Quote Style 1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="post_quote_2.html" title="Post Quote Style 2">
+                                            Post Quote Style 2
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="blog.html" title="Blog">
+                                    Blog
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="blog_small_slider.html" title="Blog Small Slider">
+                                            Blog Small Slider
+                                        </a>
+                                    </li>
+                                    <li class="submenu">
+                                        <a href="blog.html" title="Blog 1 column">
+                                            Blog 1 Column
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="blog.html" title="Blog With Right Sidebar">
+                                                    Blog With Right Sidebar
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="blog_left_sidebar.html" title="Blog With Left Sidebar">
+                                                    Blog With Left Sidebar
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="submenu">
+                                        <a href="blog_2_columns.html" title="Blog 2 columns">
+                                            Blog 2 Columns
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="blog_2_columns.html" title="Right Sidebar">
+                                                    Right Sidebar
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="blog_2_columns_left_sidebar.html" title="Left Sidebar">
+                                                    Left Sidebar
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="blog_3_columns.html" title="Blog 3 Columns">
+                                            Blog 3 Columns
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="search.html?s=Maecenas+Mauris" title="Search Page Template">
+                                            Search Page Template
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="authors.html" title="Authors">
+                                    Authors
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="authors.html" title="Authors List">
+                                            Authors List
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="author.html" title="Author Single">
+                                            Author Single
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="category_health.html" title="Categories">
+                                    Categories
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="category_health.html" title="Health">
+                                            Health
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="category_science.html" title="Science">
+                                            Science
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="category_sports.html" title="Sports">
+                                            Sports
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="category_world.html" title="World">
+                                            World
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="category_lifestyle.html" title="Lifestyle">
+                                            Lifestyle
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="submenu">
+                                <a href="contact.html" title="Contact">
+                                    Contact
+                                </a>
+                                <ul class="expand_left_contact">
+                                    <li>
+                                        <a href="contact.html" title="Contact Style 1">
+                                            Contact Style 1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="contact_2.html" title="Contact Style 2">
+                                            Contact Style 2
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>			
+            <div class="page">
+                <div class="page_layout clearfix">
+                    <div class="row page_margin_top">
+                        <div class="column column_2_3">
+                            <ul class="small_slider">
+                                <li class="slide">
+                                    <a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">
+                                        <img src='img/samples/690x450/image_09.jpg' alt='img'>
+                                    </a>
+                                    <div class="slider_content_box">
+                                        <ul class="post_details simple">
+                                            <li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>
+                                            <li class="date">
+                                                10:11 PM, Feb 02
+                                            </li>
+                                        </ul>
+                                        <h2><a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">Nuclear Fusion Closer to Becoming a Reality</a></h2>
+                                        <p class="clearfix">Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
+                                    </div>
+                                </li>
+                                <li class="slide">
+                                    <a href="post.html" title="Climate Change Debate While Britain Floods">
+                                        <img src='img/samples/690x450/image_10.jpg' alt='img'>
+                                    </a>
+                                    <div class="slider_content_box">
+                                        <ul class="post_details simple">
+                                            <li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>
+                                            <li class="date">
+                                                18:25 PM, Feb 21
+                                            </li>
+                                        </ul>
+                                        <h2><a href="post.html" title="Climate Change Debate While Britain Floods">Climate Change Debate While Britain Floods</a></h2>
+                                        <p class="clearfix">Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
+                                    </div>
+                                </li>
+                                <li class="slide">
+                                    <a href="post.html" title="The Public Health Crisis Hiding in Our Food">
+                                        <img src='img/samples/690x450/image_08.jpg' alt='img'>
+                                    </a>
+                                    <div class="slider_content_box">
+                                        <ul class="post_details simple">
+                                            <li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>
+                                            <li class="date">
+                                                10:11 PM, Feb 02
+                                            </li>
+                                        </ul>
+                                        <h2><a href="post.html" title="The Public Health Crisis Hiding in Our Food">The Public Health Crisis Hiding in Our Food</a></h2>
+                                        <p class="clearfix">Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
+                                    </div>
+                                </li>
+                                <li class="slide">
+                                    <a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">
+                                        <img src='img/samples/690x450/image_02.jpg' alt='img'>
+                                    </a>
+                                    <div class="slider_content_box">
+                                        <ul class="post_details simple">
+                                            <li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>
+                                            <li class="date">
+                                                18:25 PM, Feb 21
+                                            </li>
+                                        </ul>
+                                        <h2><a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a></h2>
+                                        <p class="clearfix">Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class='slider_posts_list_container'>
+                            </div>
+                            <h4 class="box_header page_margin_top_section">BERITA POPULER</h4>
+                            <div class="row">
+                                <ul class="blog column column_1_2">
+                                    <li class="post">
+                                        <a href="post_small_image.html" title="Nuclear Fusion Closer to Becoming a Reality">
+                                            <img src='img/samples/330x242/image_01.jpg' alt='img'>
+                                        </a>
+                                        <h2 class="with_number">
+                                            <a href="post_small_image.html" title="Nuclear Fusion Closer to Becoming a Reality">Nuclear Fusion Closer to Becoming a Reality</a>
+                                            <a class="comments_number" href="post_small_image.html#comments_list" title="2 comments">2<span class="arrow_comments"></span></a>
+                                        </h2>
+                                        <ul class="post_details">
+                                            <li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>
+                                            <li class="date">
+                                                10:11 PM, Feb 02
+                                            </li>
+                                        </ul>
+                                        <p>Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
+                                        <a class="read_more" href="post_small_image.html" title="Read more"><span class="arrow"></span><span>READ MORE</span></a>
+                                    </li>
+                                    <li class="post">
+                                        <a href="post_quote_2.html" title="High Altitudes May Aid Weight Control">
+                                            <img src='img/samples/330x242/image_02.jpg' alt='img'>
+                                        </a>
+                                        <h2 class="with_number">
+                                            <a href="post_quote_2.html" title="High Altitudes May Aid Weight Control">High Altitudes May Aid Weight Control</a>
+                                            <a class="comments_number" href="post_quote_2.html#comments_list" title="2 comments">2<span class="arrow_comments"></span></a>
+                                        </h2>
+                                        <ul class="post_details">
+                                            <li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>
+                                            <li class="date">
+                                                10:11 PM, Feb 02
+                                            </li>
+                                        </ul>
+                                        <p>Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
+                                        <a class="read_more" href="post_quote_2.html" title="Read more"><span class="arrow"></span><span>READ MORE</span></a>
+                                    </li>
+                                </ul>
+                                <ul class="blog column column_1_2">
+                                    <li class="post">
+                                        <a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">
+                                            <img src='img/samples/330x242/image_04.jpg' alt='img'>
+                                        </a>
+                                        <h2 class="with_number">
+                                            <a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a>
+                                            <a class="comments_number" href="post.html#comments_list" title="2 comments">2<span class="arrow_comments"></span></a>
+                                        </h2>
+                                        <ul class="post_details">
+                                            <li class="category"><a href="category_science.html" title="SCIENCE">SCIENCE</a></li>
+                                            <li class="date">
+                                                10:11 PM, Feb 02
+                                            </li>
+                                        </ul>
+                                        <p>Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
+                                        <a class="read_more" href="post.html" title="Read more"><span class="arrow"></span><span>READ MORE</span></a>
+                                    </li>
+                                    <li class="post">
+                                        <a href="post_video.html" title="Struggling Nuremberg Sack Coach Verbeek">
+                                            <span class="icon video"></span>
+                                            <img src='img/samples/330x242/image_03.jpg' alt='img'>
+                                        </a>
+                                        <h2 class="with_number">
+                                            <a href="post_video.html" title="Struggling Nuremberg Sack Coach Verbeek">Struggling Nuremberg Sack Coach Verbeek</a>
+                                            <a class="comments_number" href="post_video.html#comments_list" title="2 comments">2<span class="arrow_comments"></span></a>
+                                        </h2>
+                                        <ul class="post_details">
+                                            <li class="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>
+                                            <li class="date">
+                                                10:11 PM, Feb 02
+                                            </li>
+                                        </ul>
+                                        <p>Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
+                                        <a class="read_more" href="post_video.html" title="Read more"><span class="arrow"></span><span>READ MORE</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column column_1_3">
+                            <h4 class="box_header">Sambutan Kepala BKD</h4>
+                            <ul class="blog small_margin clearfix">
+                                <li class="post">
+                                    <a href="post.html" title="The Public Health Crisis Hiding in Our Food">
+                                        <img src='img/samples/510x187/image_12.jpg' alt='img'>
+                                    </a>
+                                    <div class="post_content">
+                                        <h5>
+                                            <a href="post.html" title="The Public Health Crisis Hiding in Our Food">The Public Health Crisis Hiding in Our Food</a>
+                                        </h5>
+                                        <ul class="post_details simple">
+                                            <li class="category"><a href="category_lifestyle.html" title="LIFESTYLE">LIFESTYLE</a></li>
+                                            <li class="date">
+                                                10:11 PM, Feb 02
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h4 class="box_header page_margin_top_section">DOKUMEN TERBARU</h4>
+                            <ul class="list">
+                                <li class="bullet style_1"><a href="post.html" title="Climate Change Debate While Britain Floods">Climate Change Debate While Britain Floods</a></li>
+                                <li class="bullet style_1"><a href="post.html" title="New Painkiller Rekindles Addiction Concerns">New Painkiller Rekindles Addiction Concerns</a></li>
+                                <li class="bullet style_1"><a href="post.html" title="Supreme Court Skeptical Of Ohio Law">Supreme Court Skeptical Of Ohio Law</a></li>
+                                <li class="bullet style_1"><a href="post_small_image.html" title="Struggling Nuremberg Sack Coach Verbeek">Struggling Nuremberg Sack Coach Verbeek</a></li>
+                                <li class="bullet style_1"><a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">Nuclear Fusion Closer to Becoming a Reality</a></li>
+                            </ul>
+
+                            <h4 class="box_header page_margin_top_section">PERSYARATAN</h4>
+                            <div class="vertical_carousel_container clearfix">
+                                <ul class="blog small vertical_carousel autoplay-1 scroll-1 navigation-1 easing-easeInOutQuint duration-750">
+                                    <li class="post">
+                                        <a href="post_gallery.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">
+                                            <span class="icon small gallery"></span>
+                                            <img src='img/samples/100x100/image_06.jpg' alt='img'>
+                                        </a>
+                                        <div class="post_content">
+                                            <h5>
+                                                <a href="post_gallery.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">Study Linking Illnes and Salt Leaves Researchers Doubtful</a>
+                                            </h5>
+                                            <ul class="post_details simple">
+                                                <li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>
+                                                <li class="date">
+                                                    10:11 PM, Feb 02
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="post">
+                                        <a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">
+                                            <img src='img/samples/100x100/image_12.jpg' alt='img'>
+                                        </a>
+                                        <div class="post_content">
+                                            <h5>
+                                                <a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">Syrian Civilians Trapped For Months Continue To Be Evacuated</a>
+                                            </h5>
+                                            <ul class="post_details simple">
+                                                <li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>
+                                                <li class="date">
+                                                    10:11 PM, Feb 02
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="post">
+                                        <a href="post_soundcloud.html" title="Built on Brotherhood, Club Lives Up to Name">
+                                            <img src='img/samples/100x100/image_02.jpg' alt='img'>
+                                        </a>
+                                        <div class="post_content">
+                                            <h5>
+                                                <a href="post_soundcloud.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a>
+                                            </h5>
+                                            <ul class="post_details simple">
+                                                <li class="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>
+                                                <li class="date">
+                                                    10:11 PM, Feb 02
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="post">
+                                        <a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">
+                                            <img src='img/samples/100x100/image_13.jpg' alt='img'>
+                                        </a>
+                                        <div class="post_content">
+                                            <h5>
+                                                <a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">Nuclear Fusion Closer to Becoming a Reality</a>
+                                            </h5>
+                                            <ul class="post_details simple">
+                                                <li class="category"><a href="category_science.html" title="SCIENCE">SCIENCE</a></li>
+                                                <li class="date">
+                                                    10:11 PM, Feb 02
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_container">
+                <div class="footer clearfix">
+                    <div class="row">
+                        <div class="column column_3_4">
+                            <ul class="footer_menu">
+                                <li>
+                                    <h4><a href="category_world.html" title="World">BKD Kab. Sampang</a></h4>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column column_1_4">
+                            <a class="scroll_top" href="#top" title="Scroll to top">Top</a>
+                        </div>
+                    </div>
+                    <div class="row copyright_row">
+                        <div class="column column_2_3">
+                            Jl. KH.Wachid Hasyim 43, Sampang, Jawa Timur
+                            Telp:(+62-323) 323451<br/>
+                            Email: infobkd@sampangkab.go.id
+                        </div>
+                        <div class="column column_1_3">
+                            <ul class="footer_menu">
+                                <li>
+                                    <h6><a href="about.html" title="About">Copyright © 2015</a></h6>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="background_overlay"></div>
+        <!--js-->
+        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.ba-bbq.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.11.1.custom.min.js"></script>
+        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+        <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+        <script type="text/javascript" src="js/jquery.sliderControl.js"></script>
+        <script type="text/javascript" src="js/jquery.timeago.js"></script>
+        <script type="text/javascript" src="js/jquery.hint.js"></script>
+        <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+        <script type="text/javascript" src="js/jquery.qtip.min.js"></script>
+        <script type="text/javascript" src="js/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/odometer.min.js"></script>
+    </body>
 </html>
