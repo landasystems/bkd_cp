@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+
+use common\models\Article;
+use common\models\ArticleCategory;
+?>
 <html>
     <head>
         <title>Pressroom - Responsive News &amp; Magazine Template</title>
@@ -39,29 +44,32 @@
                         </li>
                     </ul>
                     <div class="latest_news_scrolling_list_container">
+
                         <ul>
                             <li class="category">HEADLINES</li>
                             <li class="left"><a href="#"></a></li>
                             <li class="right"><a href="#"></a></li>
-                            <li class="posts">
-                                <ul class="latest_news_scrolling_list">
-                                    <li>
-                                        <a href="post.html" title="">Climate Change Debate While Britain Floods</a>
-                                    </li>
-                                    <li>
-                                        <a href="post.html" title="">The Public Health Crisis Hiding in Our Food</a>
-                                    </li>
-                                    <li>
-                                        <a href="post.html" title="">Nuclear Fusion Closer to Becoming a Reality</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="date">
-                                <abbr title="04 Apr 2014" class="timeago current">04 Apr 2014</abbr>
-                                <abbr title="04 May 2014" class="timeago">04 May 2014</abbr>
-                                <abbr title="04 June 2014" class="timeago">04 June 2014</abbr>
-                            </li>
+                            <?php
+                            $headlines = Article::find()->where(['publish' => 1])->orderBy('created DESC')->limit(3)->all();
+
+                            foreach ($headlines as $vals) {
+                                ?>
+
+                                <li class="posts">
+                                    <ul class="latest_news_scrolling_list">
+                                        <li style=>
+                                            <a href="post.html" title="<?= $vals->title ?>"><?= $vals->title ?></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="date">
+                                    <abbr title="<?= $vals->created ?>" class="timeago current"><?= $vals->created ?></abbr>
+                                </li>
+                                <?php
+                            }
+                            ?>
                         </ul>
+
                     </div>
                 </div>
             </div>
@@ -437,66 +445,33 @@
                     <div class="row page_margin_top">
                         <div class="column column_2_3">
                             <ul class="small_slider">
-                                <li class="slide">
-                                    <a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">
-                                        <img src='img/samples/690x450/image_09.jpg' alt='img'>
-                                    </a>
-                                    <div class="slider_content_box">
-                                        <ul class="post_details simple">
-                                            <li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>
-                                            <li class="date">
-                                                10:11 PM, Feb 02
-                                            </li>
-                                        </ul>
-                                        <h2><a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">Nuclear Fusion Closer to Becoming a Reality</a></h2>
-                                        <p class="clearfix">Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
-                                    </div>
-                                </li>
-                                <li class="slide">
-                                    <a href="post.html" title="Climate Change Debate While Britain Floods">
-                                        <img src='img/samples/690x450/image_10.jpg' alt='img'>
-                                    </a>
-                                    <div class="slider_content_box">
-                                        <ul class="post_details simple">
-                                            <li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>
-                                            <li class="date">
-                                                18:25 PM, Feb 21
-                                            </li>
-                                        </ul>
-                                        <h2><a href="post.html" title="Climate Change Debate While Britain Floods">Climate Change Debate While Britain Floods</a></h2>
-                                        <p class="clearfix">Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
-                                    </div>
-                                </li>
-                                <li class="slide">
-                                    <a href="post.html" title="The Public Health Crisis Hiding in Our Food">
-                                        <img src='img/samples/690x450/image_08.jpg' alt='img'>
-                                    </a>
-                                    <div class="slider_content_box">
-                                        <ul class="post_details simple">
-                                            <li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>
-                                            <li class="date">
-                                                10:11 PM, Feb 02
-                                            </li>
-                                        </ul>
-                                        <h2><a href="post.html" title="The Public Health Crisis Hiding in Our Food">The Public Health Crisis Hiding in Our Food</a></h2>
-                                        <p class="clearfix">Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
-                                    </div>
-                                </li>
-                                <li class="slide">
-                                    <a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">
-                                        <img src='img/samples/690x450/image_02.jpg' alt='img'>
-                                    </a>
-                                    <div class="slider_content_box">
-                                        <ul class="post_details simple">
-                                            <li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>
-                                            <li class="date">
-                                                18:25 PM, Feb 21
-                                            </li>
-                                        </ul>
-                                        <h2><a href="post.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a></h2>
-                                        <p class="clearfix">Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.</p>
-                                    </div>
-                                </li>
+                                <?php
+                                $slider = Article::find()->where(['publish' => 1])->orderBy('created DESC')->limit(7)->all();
+//                                Yii::error($slider);
+                                foreach ($slider as $val) {
+                                    $category = ArticleCategory::find()->where(['id' => $val->article_category_id])->one();
+                                    ?>
+                                    <li class="slide">
+                                        <a href="post.html" title=".<?= $val->title ?>.">
+                                            <img src='img/samples/690x450/image_09.jpg' alt=".<?= $val->title ?>.">
+                                        </a>
+                                        <div class="slider_content_box">
+                                            <ul class="post_details simple">
+                                                <li class="category"><a href="category_health.html" title="<?= strtoupper($category->name); ?>"><?= strtoupper($category->name); ?></a></li>
+                                                <li class="date">
+                                                    <?= $val->created ?>
+                                                </li>
+                                            </ul>
+                                            <h2><a href="post.html" title="<?= $val->title ?>"><?= $val->title ?></a></h2>
+                                            <p class="clearfix">
+                                                <?= substr($val->content, 0, 100); ?>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <?php
+                                }
+                                ?>
+
                             </ul>
                             <div class='slider_posts_list_container'>
                             </div>
@@ -608,73 +583,34 @@
 
                             <h4 class="box_header page_margin_top_section">PERSYARATAN</h4>
                             <div class="vertical_carousel_container clearfix">
-                                <ul class="blog small vertical_carousel autoplay-1 scroll-1 navigation-1 easing-easeInOutQuint duration-750">
-                                    <li class="post">
-                                        <a href="post_gallery.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">
-                                            <span class="icon small gallery"></span>
-                                            <img src='img/samples/100x100/image_06.jpg' alt='img'>
-                                        </a>
-                                        <div class="post_content">
-                                            <h5>
-                                                <a href="post_gallery.html" title="Study Linking Illnes and Salt Leaves Researchers Doubtful">Study Linking Illnes and Salt Leaves Researchers Doubtful</a>
-                                            </h5>
-                                            <ul class="post_details simple">
-                                                <li class="category"><a href="category_health.html" title="HEALTH">HEALTH</a></li>
-                                                <li class="date">
-                                                    10:11 PM, Feb 02
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="post">
-                                        <a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">
-                                            <img src='img/samples/100x100/image_12.jpg' alt='img'>
-                                        </a>
-                                        <div class="post_content">
-                                            <h5>
-                                                <a href="post.html" title="Syrian Civilians Trapped For Months Continue To Be Evacuated">Syrian Civilians Trapped For Months Continue To Be Evacuated</a>
-                                            </h5>
-                                            <ul class="post_details simple">
-                                                <li class="category"><a href="category_world.html" title="WORLD">WORLD</a></li>
-                                                <li class="date">
-                                                    10:11 PM, Feb 02
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="post">
-                                        <a href="post_soundcloud.html" title="Built on Brotherhood, Club Lives Up to Name">
-                                            <img src='img/samples/100x100/image_02.jpg' alt='img'>
-                                        </a>
-                                        <div class="post_content">
-                                            <h5>
-                                                <a href="post_soundcloud.html" title="Built on Brotherhood, Club Lives Up to Name">Built on Brotherhood, Club Lives Up to Name</a>
-                                            </h5>
-                                            <ul class="post_details simple">
-                                                <li class="category"><a href="category_sports.html" title="SPORTS">SPORTS</a></li>
-                                                <li class="date">
-                                                    10:11 PM, Feb 02
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="post">
-                                        <a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">
-                                            <img src='img/samples/100x100/image_13.jpg' alt='img'>
-                                        </a>
-                                        <div class="post_content">
-                                            <h5>
-                                                <a href="post.html" title="Nuclear Fusion Closer to Becoming a Reality">Nuclear Fusion Closer to Becoming a Reality</a>
-                                            </h5>
-                                            <ul class="post_details simple">
-                                                <li class="category"><a href="category_science.html" title="SCIENCE">SCIENCE</a></li>
-                                                <li class="date">
-                                                    10:11 PM, Feb 02
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
+
+
+                                <?php
+                                $syarat = Article::find()->where(['publish' => 1, 'article_category_id' => 51])->orderBy('created DESC')->all();
+                                foreach ($syarat as $vals) {
+                                    ?>
+                                    <ul class="blog small vertical_carousel autoplay-1 scroll-1 navigation-1 easing-easeInOutQuint duration-750">
+
+                                        <li class="post">
+                                            <a href="post_gallery.html" title="<?= $vals->title; ?>">
+                                                <span class="icon small gallery"></span>
+                                                <img src='img/samples/100x100/image_06.jpg' alt='img'>
+                                            </a>
+                                            <div class="post_content">
+                                                <h5>
+                                                    <a href="post_gallery.html" title="<?= $vals->title; ?>"><?= $vals->title; ?></a>
+                                                </h5>
+
+                                                <ul class="post_details simple">
+                                                    <li class="date">
+                                                        <?= $vals->created; ?>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                <?php } ?>
+
                             </div>
                         </div>
                     </div>
@@ -703,7 +639,7 @@
                         <div class="column column_1_3">
                             <ul class="footer_menu">
                                 <li>
-                                    <h6><a href="about.html" title="About">Copyright © 2015</a></h6>
+                                    <h6><a href="about.html" title="About">Copyright &copy; 2015</a></h6>
                                 </li>
                             </ul>
                         </div>
