@@ -92,10 +92,20 @@ class Article extends \yii\db\ActiveRecord {
         return Yii::$app->urlManager->createUrl($this->alias);
     }
 
+    public function getImgSrc() {
+        preg_match_all('/<img[^>]+>/i', $this->content, $img_tag);
+        if (isset($img_tag[0][0])) {
+            preg_match_all('/(src)=("[^"]*")/i', $img_tag[0][0], $result);
+            return $result[0][0];
+        } else {
+            return 'src="'.Yii::$app->homeUrl . 'img/no.jpg"';
+        }
+    }
+
     public function getUser() {
         return $this->hasOne(User::className(), ['id' => 'created_user_id']);
     }
-    
+
     public function getCategory() {
         return $this->hasOne(ArticleCategory::className(), ['id' => 'article_category_id']);
     }

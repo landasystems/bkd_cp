@@ -831,17 +831,6 @@ jQuery(document).ready(function($){
 		}
 	});
 	
-	//browser history
-	$(".tabs .ui-tabs-nav a").click(function(){
-		if($(this).attr("href").substr(0,4)!="http")
-			$.bbq.pushState($(this).attr("href"));
-		else
-			window.location.href = $(this).attr("href");
-	});
-	$(".ui-accordion .ui-accordion-header").click(function(){
-		$.bbq.pushState("#" + $(this).attr("id").replace("accordion-", ""));
-	});
-	
 	//preloader
 	var preloader = function()
 	{
@@ -1023,29 +1012,6 @@ jQuery(document).ready(function($){
 	  event.preventDefault();
 	});
 	
-	//timeago
-	$("abbr.timeago").timeago();
-	
-	if($("#map").length)
-	{
-		//google map
-		var coordinate = new google.maps.LatLng(45.358887,-75.702429);
-		var mapOptions = {
-			zoom: 15,
-			center: coordinate,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			streetViewControl: false,
-			mapTypeControl: false
-		};
-
-		map = new google.maps.Map(document.getElementById("map"),mapOptions);
-		marker = new google.maps.Marker({
-			position: new google.maps.LatLng(45.358887,-75.702429),
-			map: map,
-			icon: new google.maps.MarkerImage("img/icons/other/map_pointer.png", new google.maps.Size(38, 45), null, new google.maps.Point(18, 44))
-		});
-	}
-	
 	//window resize
 	function windowResize()
 	{
@@ -1122,14 +1088,6 @@ jQuery(document).ready(function($){
 		return false;
 	});
 	
-	//hint
-	$(".comment_form input[type='text'], .contact_form input[type='text'], .comment_form textarea, .contact_form textarea, .search input[type='text'], .search_form input[type='text']").hint();
-	
-	//cancel comment button
-	$("#cancel_comment").click(function(event){
-		event.preventDefault();
-		$(this).css('display', 'none');
-	});
 	
 	//fancybox
 	$(".prettyPhoto").prettyPhoto({

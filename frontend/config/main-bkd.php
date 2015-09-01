@@ -14,14 +14,10 @@ $config = [
             'rules' => [
                 'login' => 'site/login',
                 'home' => 'site/index',
-                'promotion' => 'article/promotion',
-                'gallery' => 'article/gallery',
-                'gallery/<page>' => 'article/gallery',
-                'facility/<alias>' => 'article/facility',
-                'sahid/<alias>' => 'article/sahid',
                 'contact-us' => 'site/contact',
                 'news/<alias>' => 'article/news',
                 'article/<alias>' => 'article/view',
+                'download' => 'site/download',
                 '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ]
