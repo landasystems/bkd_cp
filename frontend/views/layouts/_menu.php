@@ -22,7 +22,7 @@ $current = $_SERVER['REQUEST_URI'];
                 <li class="category">HEADLINES</li>
                 <li class="left"><a href="#"></a></li>
                 <li class="right"><a href="#"></a></li>
-                <li class="posts">
+                <li class="posts" style="width: 500px">
                     <ul class="latest_news_scrolling_list">
                         <?php
                         $top = Article::find()->where(['article_category_id' => [50, 51], 'publish' => 1])->orderBy('RAND()')->limit(3)->all();
@@ -198,6 +198,11 @@ $current = $_SERVER['REQUEST_URI'];
                     Download
                 </a>
             </li>
+            <li class="<?= ($current == Yii::$app->urlManager->createUrl('tanya-jawab')) ? "selected" : ""; ?>">
+                <a href="<?= Yii::$app->urlManager->createUrl('tanya-jawab') ?>">
+                    Tanya Jawab
+                </a>
+            </li>
             <li class="<?= ($current == Yii::$app->urlManager->createUrl('contact-us')) ? "selected" : ""; ?>">
                 <a href="<?= Yii::$app->urlManager->createUrl('contact-us') ?>">
                     Kontak
@@ -214,253 +219,165 @@ $current = $_SERVER['REQUEST_URI'];
         <div class="mobile-menu-divider"></div>
         <nav>
             <ul class="mobile-menu">
-                <li class="submenu selected">
-                    <a href="home.html" title="Home">
+                <li class="<?= ($current == Yii::$app->urlManager->createUrl('home')) ? "selected" : ""; ?>">
+                    <a href="<?= Yii::$app->urlManager->createUrl('home') ?>" title="Home">
                         Home
                     </a>
+                </li>
+                <li class="submenu">
+                    <a href="#">
+                        Profil
+                    </a>
                     <ul>
                         <li>
-                            <a href="home.html" title="Home Style 1">
-                                Home Style 1
+                            <a href="<?= Yii::$app->urlManager->createUrl('article/profil-bkd-kabupaten-sampang') ?>" title="About Style 1">
+                                Tentang Kami
                             </a>
                         </li>
                         <li>
-                            <a href="home_2.html" title="Home Style 2">
-                                Home Style 2
+                            <a href="<?= Yii::$app->urlManager->createUrl('article/visi-dan-misi') ?>" title="About Style 2">
+                                Visi & Misi
                             </a>
                         </li>
                         <li>
-                            <a href="home_3.html" title="Home Style 3">
-                                Home Style 3
+                            <a href="<?= Yii::$app->urlManager->createUrl('article/struktur-organisasi') ?>" title="Default">
+                                Struktur Organisasi
                             </a>
                         </li>
                         <li>
-                            <a href="home_4.html" title="Home Style 3">
-                                Home Style 4
-                            </a>
-                        </li>
-                        <li>
-                            <a href="home_5.html" title="Home Style 5">
-                                Home Style 5
-                            </a>
-                        </li>
-                        <li>
-                            <a href="home_6.html" title="Home Style 6">
-                                Home Style 6
-                            </a>
-                        </li>
-                        <li class="selected">
-                            <a href="home_7.html" title="Home Style 7">
-                                Home Style 7
+                            <a href="<?= Yii::$app->urlManager->createUrl('article/sambutan-kepala-bkd') ?>" title="404 Not Found">
+                                Kepala BKD
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="submenu">
-                    <a href="about.html" title="Pages">
-                        Pages
+                <li class="<?= ($current == Yii::$app->urlManager->createUrl('news/persyaratan')) ? "selected" : ""; ?>">
+                    <a href="<?= Yii::$app->urlManager->createUrl('news/persyaratan') ?>">
+                        Persyaratan
                     </a>
-                    <ul>
-                        <li>
-                            <a href="about.html" title="About Style 1">
-                                About Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="about_2.html" title="About Style 2">
-                                About Style 2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="default.html" title="Default">
-                                Default
-                            </a>
-                        </li>
-                        <li>
-                            <a href="404.html" title="404 Not Found">
-                                404 Not Found
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="submenu">
-                    <a href="post.html" title="Post Formats">
-                        Post Formats
+                    <a href="#">
+                        Layanan
                     </a>
                     <ul>
                         <li>
-                            <a href="post.html">
-                                Post Default
+                            <a href="#">
+                                Kepala Badan
                             </a>
                         </li>
                         <li>
-                            <a href="post_gallery.html" title="Post Gallery">
-                                Post Gallery
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_small_image.html" title="Post Small Image">
-                                Post Small Image
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_video.html" title="Post Video YouTube">
-                                Post Video Youtube
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_video_2.html" title="Post Video Vimeo">
-                                Post Video Vimeo
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_soundcloud.html" title="Post Soundcloud">
-                                Post Soundcloud
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_review.html" title="Post Review Style 1">
-                                Post Review Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_review_2.html" title="Post Review Style 2">
-                                Post Review Style 2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_quote.html" title="Post Quote Style 1">
-                                Post Quote Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="post_quote_2.html" title="Post Quote Style 2">
-                                Post Quote Style 2
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="blog.html" >
-                        Blog
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="blog_small_slider.html" title="Blog Small Slider">
-                                Blog Small Slider
-                            </a>
-                        </li>
-                        <li class="submenu">
-                            <a href="blog.html" title="Blog 1 column">
-                                Blog 1 Column
+                            <a href="<?= Yii::$app->urlManager->createUrl('article/kesekretariatan') ?>">
+                                Kesekretariatan
                             </a>
                             <ul>
                                 <li>
-                                    <a href="blog.html" >
-                                        Blog With Right Sidebar
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bagian-umum') ?>" >
+                                        Bagian Umum
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="blog_left_sidebar.html" >
-                                        Blog With Left Sidebar
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="blog_2_columns.html" title="Blog 2 columns">
-                                Blog 2 Columns
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="blog_2_columns.html" title="Right Sidebar">
-                                        Right Sidebar
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bagian-keuangan') ?>" >
+                                        Bagian Keuangan
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="blog_2_columns_left_sidebar.html" title="Left Sidebar">
-                                        Left Sidebar
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bagian-program') ?>" >
+                                        Bagian Program
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="blog_3_columns.html" title="Blog 3 Columns">
-                                Blog 3 Columns
+                            <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-pemembangan-karir') ?>">
+                                Pengembangan karir
                             </a>
+                            <ul>
+                                <li>
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bagian-formasi') ?>" >
+                                        Bidang Formasi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-pengadaan') ?>" >
+                                        Pengembangan Pengadaan
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <a href="search.html?s=Maecenas+Mauris" title="Search Page Template">
-                                Search Page Template
+                            <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-mutasi') ?>">
+                                Bidang Mutasi
                             </a>
+                            <ul>
+                                <li>
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-struktural') ?>" >
+                                        Bidang Struktural
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-fungsional') ?>" >
+                                        Bidang Fungsional
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
+                        <li>
+                            <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-pembinaan-dan-kesejahteraan-pegawai') ?>">
+                                Pembinaan dan kesejahteraan pegawai
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-pembinaan') ?>">
+                                        Bidang Pembinaan
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-kesejahteraan') ?>" >
+                                        Bidang Kesejahteraan
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-pendidikan-dan-pelatihan') ?>">
+                                Bidang pendidikan dan pelatihan
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-diklat-tf') ?>" >
+                                        Bidang Diklat TF
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= Yii::$app->urlManager->createUrl('article/bidang-diklat-pim') ?>" >
+                                        Bidang Diklat PIM
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
-                <li class="submenu">
-                    <a href="authors.html" title="Authors">
-                        Authors
+                <li class="<?= ($current == Yii::$app->urlManager->createUrl('news/berita')) ? "selected" : ""; ?>">
+                    <a href="<?= Yii::$app->urlManager->createUrl('news/berita') ?>" >
+                        Berita
                     </a>
-                    <ul>
-                        <li>
-                            <a href="authors.html" title="Authors List">
-                                Authors List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="author.html" title="Author Single">
-                                Author Single
-                            </a>
-                        </li>
-                    </ul>
                 </li>
-                <li class="submenu">
-                    <a href="category_health.html" title="Categories">
-                        Categories
+                <li class="<?= ($current == Yii::$app->urlManager->createUrl('download')) ? "selected" : ""; ?>">
+                    <a href="<?= Yii::$app->urlManager->createUrl('download') ?>">
+                        Download
                     </a>
-                    <ul>
-                        <li>
-                            <a href="category_health.html" title="Health">
-                                Health
-                            </a>
-                        </li>
-                        <li>
-                            <a href="category_science.html" title="Science">
-                                Science
-                            </a>
-                        </li>
-                        <li>
-                            <a href="category_sports.html" title="Sports">
-                                Sports
-                            </a>
-                        </li>
-                        <li>
-                            <a href="category_world.html" title="World">
-                                World
-                            </a>
-                        </li>
-                        <li>
-                            <a href="category_lifestyle.html" title="Lifestyle">
-                                Lifestyle
-                            </a>
-                        </li>
-                    </ul>
                 </li>
-                <li class="submenu">
-                    <a href="contact.html" title="Contact">
-                        Contact
+                <li class="<?= ($current == Yii::$app->urlManager->createUrl('tanya-jawab')) ? "selected" : ""; ?>">
+                    <a href="<?= Yii::$app->urlManager->createUrl('tanya-jawab') ?>">
+                        Tanya Jawab
                     </a>
-                    <ul class="expand_left_contact">
-                        <li>
-                            <a href="contact.html" title="Contact Style 1">
-                                Contact Style 1
-                            </a>
-                        </li>
-                        <li>
-                            <a href="contact_2.html" title="Contact Style 2">
-                                Contact Style 2
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="<?= ($current == Yii::$app->urlManager->createUrl('contact-us')) ? "selected" : ""; ?>">
+                    <a href="<?= Yii::$app->urlManager->createUrl('contact-us') ?>">
+                        Kontak
+                    </a>
                 </li>
             </ul>
         </nav>

@@ -18,15 +18,15 @@ $config = [
                 'news/<alias>' => 'article/news',
                 'article/<alias>' => 'article/view',
                 'download' => 'site/download',
+                'tanya-jawab' => 'tanya/index',
+                'tanya-jawab/<id>/<alias>' => 'tanya/view',
                 '<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ]
         ],
     ],
     'params' => [
-        'urlImg' => 'http://localhost/cms/sahidmontana_cp/img/gallery/satu/',
-        'galleryImg' => '../img/gallery/satu/',
-        'sliderImg' => 'http://localhost/cms/sahidmontana_cp/img/slider/satu/'
+
     ]
         ,
 ];

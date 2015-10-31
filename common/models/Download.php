@@ -24,7 +24,7 @@ use Yii;
 class Download extends \yii\db\ActiveRecord {
 
     public static function lists() {
-        $dir = '/var/www/cms/bkd_cp/img/download';
+        $dir = dirname(__DIR__) . '/../img/download';
         $scanned_directory = array_diff(scandir($dir), array('..', '.'));
         return $scanned_directory;
     }

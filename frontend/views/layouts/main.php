@@ -4,6 +4,7 @@ use yii\helpers\Html;
 <!DOCTYPE html>
 <html>
     <head>
+        <?= Html::csrfMetaTags() ?>
         <meta charset=utf-8>
         <title><?= Html::encode($this->title) ?></title>
         <meta name=description content="Informasi lengkap kepegawaian PNS, Honorer di Kabupaten Sampang, Madura">
@@ -20,6 +21,7 @@ use yii\helpers\Html;
         <link type="text/css" rel='stylesheet' href="<?= Yii::$app->homeUrl ?>css/responsive.css">
         <link type="text/css" rel='stylesheet' href="<?= Yii::$app->homeUrl ?>css/odometer-theme-default.css">
         <link rel="shortcut icon" href="img/favicon.ico">
+        <script type="text/javascript" src="<?= Yii::$app->homeUrl ?>js/jquery-1.11.1.min.js"></script>
     </head>
     <body>
         <div class="site_container">
@@ -31,7 +33,6 @@ use yii\helpers\Html;
         </div>
         <div class="background_overlay"></div>
         <!--js-->
-        <script type="text/javascript" src="<?= Yii::$app->homeUrl ?>js/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="<?= Yii::$app->homeUrl ?>js/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="<?= Yii::$app->homeUrl ?>js/jquery.ba-bbq.min.js"></script>
         <script type="text/javascript" src="<?= Yii::$app->homeUrl ?>js/jquery-ui-1.11.1.custom.min.js"></script>

@@ -54,22 +54,22 @@ $this->title = "Kontak BKD Sampang";
             <form class="contact_form margin_top_15" id="contact_form" method="post" action="contact_form/contact_form.php">
                 <fieldset class="column column_1_3">
                     <div class="block">
-                        <input class="text_input" name="name" type="text" value="Your Name *" placeholder="Your Name *">
+                        <input class="text_input" name="name" type="text" value="" placeholder="Nama Anda *">
                     </div>
                 </fieldset>
                 <fieldset class="column column_1_3">
                     <div class="block">
-                        <input class="text_input" name="email" type="text" value="Your Email *" placeholder="Your Email *">
+                        <input class="text_input" name="email" type="text" value="" placeholder="Email Anda*">
                     </div>
                 </fieldset>
                 <fieldset class="column column_1_3">
                     <div class="block">
-                        <input class="text_input" name="subject" type="text" value="Subject" placeholder="Subject">
+                        <input class="text_input" name="subject" type="text" placeholder="Judul">
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="block">
-                        <textarea name="message" placeholder="Message *">Message *</textarea>
+                        <textarea name="message" placeholder="Pesan, pertanyaan, atau keluhan *"></textarea>
                     </div>
                 </fieldset>
                 <fieldset>

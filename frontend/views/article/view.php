@@ -3,7 +3,7 @@ $this->title = $model->title;
 ?>
 <div class="page_header clearfix page_margin_top">
     <div class="page_header_left">
-        <h1 class="page_title"><?php echo $this->title; ?></h1>
+        <h2 class="page_title"><?php echo $this->title; ?></h2>
     </div>
     <div class="page_header_right" style="text-align: right">
         <script>(function (d, s, id) {
