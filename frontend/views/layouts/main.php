@@ -25,7 +25,9 @@ use yii\helpers\Html;
     </head>
     <body>
         <div class="site_container">
-            <?= $this->render('_menu') ?>		
+            <?= $this->render('_menu') ?>
+           
+
             <div class="page">
                 <?= $content ?>
             </div>

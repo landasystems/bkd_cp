@@ -966,7 +966,9 @@ ul.sf-menu .mega_menu li
 }
 .caroufredsel_wrapper_slider
 {
-    margin-top: 30px !important;
+    height: 460px;
+    height: 460px !important;
+
 }
 .slider
 {
@@ -993,6 +995,7 @@ ul.sf-menu .mega_menu li
 .slider li.slide img
 {
     width: 1250px;
+    height: 460px;
 }
 .slider li.slide .pr_preloader
 {
@@ -1037,11 +1040,11 @@ ul.sf-menu .mega_menu li
 .slider_content_box
 {
     position: absolute;
-    width: 350px;
+    width: 650px;
     padding: 18px 20px 20px;
     background: rgba(0,0,0,0.5);
     left: 105px;
-    top: 260px;
+    top: 340px;
 }
 .slider_content_box h2,
 .slider_content_box h5
