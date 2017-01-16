@@ -986,7 +986,7 @@ ul.sf-menu .mega_menu li
 {
     float: left;
     position: relative;
-    width: 1250px;
+    width: 1040px;
     height: 550px;
     background-position: top center;
     background-repeat: no-repeat;
@@ -994,7 +994,7 @@ ul.sf-menu .mega_menu li
 }
 .slider li.slide img
 {
-    width: 1250px;
+    width: 1050px;
     height: 460px;
 }
 .slider li.slide .pr_preloader

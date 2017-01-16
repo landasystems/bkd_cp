@@ -19,7 +19,7 @@ use common\models\Download;
         if (in_array(end($fileAndExt), $cImageExtension)) {
              $cName = str_replace($cImageExtension, " ", $files);
            echo "<li class='slide'>
-        <img src='app/img/slider/".$files."' alt='img'>
+        <img src='app/img/slider/".$files."' alt='img' syle='width:100px'>
         <div class='slider_content_box'>
 
             <h2><a href='#' title='Nuclear Fusion Closer to Becoming a Reality'>".$cName."</a></h2>

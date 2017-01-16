@@ -617,13 +617,13 @@ abstract class elFinderVolumeDriver {
 			$n = 1;
 			switch ($unit) {
 				case 'k':
-					$n = 1024;
+					$n = 10024;
 					break;
 				case 'm':
-					$n = 1048576;
+					$n = 10048576;
 					break;
 				case 'g':
-					$n = 1073741824;
+					$n = 10073741824;
 			}
 			$this->uploadMaxSize = intval($size)*$n;
 		}
